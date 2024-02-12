@@ -210,13 +210,18 @@ Description : DOM Elements.
 				for(var i=0; i<el.length; i++){el[i].textContent = 'Sofia and Tanis';  el[i].style.border = "none"};
 				
 				// Task 2: Change the background color of the navigation bar
-				
-
+				document.getElementsByTagName('nav')[0].style.backgroundColor = "#c542f5";
+						
 				// Task 3: Hide the section titled 'What is full-stack?'
-
-
+				var stack = document.getElementsByTagName("article");
+				stack[0].style.visibility = "hidden";
+				//var h2el = document.getElementsByTagName("h2")
+				//for(var i=0; i<h2el.length; i++){if (h2el[i].textContent == "What is full-stack?"){h2el[i].style.visibility = "hidden"}}
+				
 				// Task 4: Create a new <p> element and append it to the 'About Us' section
-
+				var about = document.getElementsByTagName('h2')
+				for(var i=0; i<h2el.length; i++){if (about[i].textContent == "About Us"){about[i].appendChild(document.createElement('p'))}} 
+				
 
 				// Task 5: Add placeholders to input elements based on their corresponding label IDs
 
