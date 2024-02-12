@@ -215,22 +215,29 @@ Description : DOM Elements.
 				// Task 3: Hide the section titled 'What is full-stack?'
 				var stack = document.getElementsByTagName("article");
 				stack[0].style.visibility = "hidden";
-				//var h2el = document.getElementsByTagName("h2")
-				//for(var i=0; i<h2el.length; i++){if (h2el[i].textContent == "What is full-stack?"){h2el[i].style.visibility = "hidden"}}
 				
 				// Task 4: Create a new <p> element and append it to the 'About Us' section
-				var about = document.getElementsByTagName('h2')
-				for(var i=0; i<h2el.length; i++){if (about[i].textContent == "About Us"){about[i].appendChild(document.createElement('p'))}} 
+				var newp = document.createElement('p');
+				newp.textContent = "This is a new paragraph.";
+				var about = document.getElementsByTagName('h2');
+				for(var i=0; i<about.length; i++){if (about[i].textContent == "About Us"){about[i].appendChild(newp)}} 
 				
 
 				// Task 5: Add placeholders to input elements based on their corresponding label IDs
-
+				document.getElementById("name").placeholder = "Name";
+				document.getElementById("email").placeholder = "Email"; 
+				document.getElementById("message").placeholder = "Message"; 
 
 				// Task 6: Set the src attribute of the image
-
-
+				var img = document.getElementsByTagName('img');
+				img[0].setAttribute("src", "./images/example.svg");
+				
 				// Task 7: Add a new item in the navigation menu
-
+				var navbar = document.getElementById("nav");
+				var newitem= document.createElement("a");
+				newitem.setAttribute();
+				navbar.appendChild(newitem);
+				 
 
 				// Task 8: Change the submit button text upon clicking and make it disabled
 
