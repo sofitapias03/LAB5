@@ -132,21 +132,21 @@ const getMatrixData2D = function (matrixId) {
 // The functions must check the posibility of calculation too.
 
 // Helper functions to check matrix compatibility for addition and multiplication
-function Compatible(matrix1, matrix2) {
+function areCompatible(matrix1, matrix2) {
     if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
         return false;
     }
     return true;
 } // in order to have appropiate opperations the matrixes must have equal dimentions both in rows and columns
 
-function Multipliable(matrix1, matrix2) {
+function canMultiply(matrix1, matrix2) {
     if (matrix1[0].length !== matrix2.length) {
         return false;
     }
     return true;
 }
 function addMatrices(matrix1, matrix2) {
-    if (!areMatricesCompatible(matrix1, matrix2)) {
+    if (!Compatible(matrix1, matrix2)) {
         return "Matrices are not compatible for addition.";
     }
 
@@ -166,7 +166,7 @@ function addMatrices(matrix1, matrix2) {
 }
 
 const subtractMatrices = function(matrix1, matrix2) {
-    if (!areMatricesCompatible(matrix1, matrix2)) {
+    if (!areCompatible(matrix1, matrix2)) {
         return "Matrices are not compatible for subtraction.";
     }
 
@@ -186,7 +186,7 @@ const subtractMatrices = function(matrix1, matrix2) {
 };
 
 function multiplyMatrices(matrix1, matrix2) {
-    if (!areMatricesMultipliable(matrix1, matrix2)) {
+    if (!canMultiply(matrix1, matrix2)) {
         return "Matrices are not compatible for multiplication.";
     }
 
