@@ -185,7 +185,7 @@ const subtractMatrices = function(matrix1, matrix2) {
     return result;
 };
 
-function multiplyMatrices(matrix1, matrix2) {
+const multiplyMatrices = function (matrix1, matrix2) {
     if (!canMultiply(matrix1, matrix2)) {
         return "Matrices are not compatible for multiplication.";
     }
