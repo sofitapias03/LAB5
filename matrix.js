@@ -50,9 +50,25 @@ const showResult = (title, containerId, rows, cols, dataArray) => {
     container.appendChild(table);
 };
 
-const showResult2D = (title, containerId, dataArray) => {
-	// dataArray is a 2D array
-	// complete this function based on the showResult function
+function showResult2D(title, containerId, dataArray) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    
+    const titleElement = document.createElement('h3');
+    titleElement.textContent = title;
+    container.appendChild(titleElement);
+    
+    const table = document.createElement('table');
+    dataArray.forEach(rowData => {
+        const row = document.createElement('tr');
+        rowData.forEach(cellData => {
+            const cell = document.createElement('td');
+            cell.textContent = cellData;
+            row.appendChild(cell);
+        });
+        table.appendChild(row);
+    });
+    container.appendChild(table);
 }
 
 function performOperation(operation) {
@@ -66,6 +82,9 @@ function performOperation(operation) {
     // Call your matrix calculation functions here
     // For example: if (operation === 'add') { addMatrices(matrix1, matrix2); }
 	// prints suitable messages for impossible situation
+    if (operation == 'add'){ addMatrices(matrix1, matrix1)};
+    if (operation == 'multipliy'){multiplyMatrices (matrix1, matrix2)};
+    if (operation == 'minus'){subtractMatrices (matrix1, matrix2)};
     showResult('The Result', 'matrix3', 2, 4, result); // use suitable function for printing results
 }
 
@@ -103,12 +122,63 @@ const getMatrixData2D = function (matrixId) {
 
 // Add your matrix calculation functions here
 // The functions must check the posibility of calculation too.
-function addMatrices(matrix1, matrix2){ 
-	// provide the code
+function areMatricesCompatible(matrix1, matrix2) {
+    // Check if both matrices have the same dimensions
+    return matrix1.length === matrix2.length && matrix1[0].length === matrix2[0].length;
 }
-const subtractMatrices = function (matrix1, matrix2) { 
-	// provide the code
+
+function areMatricesMultipliable(matrix1, matrix2) {
+    // Check if the number of columns in the first matrix is equal to the number of rows in the second matrix
+    return matrix1[0].length === matrix2.length;
+}
+
+function addMatrices(matrix1, matrix2){ 
+    if (!areMatricesCompatible(matrix1, matrix2)) {
+        return "Matrices are not compatible for addition.";
+    }
+
+    let result = [];
+    for (let i = 0; i < matrix1.length; i++) {
+        result.push([]);
+        for (let j = 0; j < matrix1[0].length; j++) {
+            result[i][j] = matrix1[i][j] + matrix2[i][j];
+        }
+    }
+    return result;
+}
+
+const subtractMatrices = function(matrix1, matrix2) {
+    if (!areMatricesCompatible(matrix1, matrix2)) {
+        return "Matrices are not compatible for subtraction.";
+    }
+
+    let result = [];
+    for (let i = 0; i < matrix1.length; i++) {
+        result.push([]);
+        for (let j = 0; j < matrix1[0].length; j++) {
+            result[i][j] = matrix1[i][j] - matrix2[i][j];
+        }
+    }
+    return result;
 };
-const multiplyMatrices = (matrix1, matrix2) => { 
-	// provide the code
+
+const multiplyMatrices = (matrix1, matrix2) => {
+    if (!areMatricesMultipliable(matrix1, matrix2)) {
+        return "Matrices are not compatible for multiplication.";
+    }
+
+    let result = [];
+    for (let i = 0; i < matrix1.length; i++) {
+        result.push([]);
+        for (let j = 0; j < matrix2[0].length; j++) {
+            let sum = 0;
+            for (let k = 0; k < matrix1[0].length; k++) {
+                sum += matrix1[i][k] * matrix2[k][j];
+            }
+            result[i][j] = sum;
+        }
+    }
+    return result;
 };
+
+
