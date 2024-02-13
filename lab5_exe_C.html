@@ -248,8 +248,8 @@ Description : DOM Elements.
 				button.addEventListener('click', function(){button.value = 'Submitted'; button.disabled=true;})		
 
 				// Task 9: Change the text color of each item in the 'Related Links' to green
-				const links = document.querySelectorAll('aside .relatedLink');
-				links.forEach(link => {link.style.color='green';});
+				const links = document.querySelectorAll('aside.related');
+				links.forEach(function(link){link.style.color='green'});
 
 				// Task 10: Add a red solid border to the footer
 				const footer = document.getElementsByClassName('footer');
