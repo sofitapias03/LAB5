@@ -244,9 +244,9 @@ Description : DOM Elements.
 				
 
 				// Task 8: Change the submit button text upon clicking and make it disabled
-				const button = querySelector('input[type="button"]');
+				const button = document.querySelector('input[type="button"]');
 				button.addEventListener('click', function(){button.value = 'Submitted'; button.disabled=true;})		
-				
+
 				// Task 9: Change the text color of each item in the 'Related Links' to green
 				const links = document.querySelectorAll('aside .relatedLink');
 				links.forEach(link => {link.style.color='green';});
@@ -255,7 +255,6 @@ Description : DOM Elements.
 				const footer = document.getElementsByClassName('footer');
 				footer.style.border = '2px solid red';
 							
-
 			});
 		</script>
 	</body>
